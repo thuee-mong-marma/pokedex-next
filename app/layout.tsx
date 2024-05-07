@@ -3,11 +3,13 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/components/ModalProvider";
-import Head from "next/head";
-
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
-const poppins = Poppins({ subsets: ["latin"], weight: ['100', '200', '300','400', '500', '600', '700', '800', '900'] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
   title: "Pokedex",
@@ -21,11 +23,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ModalProvider/>
-      <Head>
-      <link rel="shortcut icon" href="./favicon.ico"/>
-      </Head>
-      <body className={cn("bg-white", poppins.className)}>{children}</body>
+      <ModalProvider />
+      <body
+        className={cn(
+          "min-h-screen flex flex-col bg-green-500",
+          poppins.className
+        )}
+      >
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

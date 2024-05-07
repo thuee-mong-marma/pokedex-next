@@ -34,7 +34,7 @@ const Pokemons = () => {
   }
 
   return (
-    <div>
+    <>
       <div className="grid gap-4 md:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {pokemons.map((pokemon, index) => (
           <Pokemon pokemon={pokemon} key={index} />
@@ -46,7 +46,7 @@ const Pokemons = () => {
         paginate={paginate}
         currentPage={currentPage}
       />
-    </div>
+    </>
   );
 };
 

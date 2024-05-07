@@ -48,7 +48,7 @@ const Pagination = ({
           <li
             key={number}
             className={cn(
-              "bg-neutral-200 font-medium py-2 px-4 rounded-md border cursor-pointer hover:bg-black hover:text-white transition-colors duration-300 ease-in-out",
+              "bg-neutral-200 font-medium py-2 px-4 rounded-md cursor-pointer hover:bg-black hover:text-white transition-colors duration-300 ease-in-out",
               currentPage == number-1 ? "bg-black text-white" : ""
             )}
             onClick={(event) => {

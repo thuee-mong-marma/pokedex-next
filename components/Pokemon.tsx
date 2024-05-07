@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Skeleton } from "@/components/core/Skeleton";
 import { useModal } from "@/hooks/useModal";
 import { usePokemon } from "@/hooks/usePokemon";
-import { cn } from "@/lib/utils";
 
 interface PokemonProps {
   pokemon: PokemonData;
@@ -26,7 +26,7 @@ const Pokemon = ({ pokemon }: PokemonProps) => {
     const fetchPokemon = async () => {
       const response = await fetch(pokemon.url);
       const data = await response.json();
-      console.log("pokemon data", data);
+      // console.log("pokemon data", data);
       setPokemonData(data);
       setIsLoading(false);
     };
@@ -45,7 +45,7 @@ const Pokemon = ({ pokemon }: PokemonProps) => {
       onClick={handleClick}
     >
       {!pokemonData || isLoading ? (
-        <div>Loading...</div>
+        <PokemonSkeleton />
       ) : (
         <>
           <div className="w-full flex items-center justify-around text-xl capitalize font-medium">
@@ -73,6 +73,24 @@ const Pokemon = ({ pokemon }: PokemonProps) => {
           </div>
         </>
       )}
+    </div>
+  );
+};
+
+const PokemonSkeleton = () => {
+  return (
+    <div className="space-y-8">
+      <div className="flex items-center justify-between">
+        <Skeleton className="h-8 w-[100px]"/>
+        <Skeleton className="h-8 w-[40px]"/>
+      </div>
+      <div className="flex items-center justify-center">
+        <Skeleton className="h-28 w-28"/>
+      </div>
+      <div className="flex items-center justify-center gap-2">
+        <Skeleton className="h-8 w-16"/>
+        <Skeleton className="h-8 w-16"/>
+      </div>
     </div>
   );
 };
