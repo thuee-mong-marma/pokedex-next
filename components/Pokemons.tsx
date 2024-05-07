@@ -6,10 +6,9 @@ import Pagination from "./Pagination";
 import Loader from "./Loader";
 
 const Pokemons = () => {
-  const totalPokemons = 1118;
   const [pokemons, setPokemons] = useState([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const [pokemonsPerPage] = useState<number>(12);
+  const pokemonsPerPage = 12;
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -26,7 +25,7 @@ const Pokemons = () => {
     };
 
     fetchPosts();
-  }, [currentPage, pokemonsPerPage]);
+  }, [currentPage]);
 
   if (!pokemons.length) {
     return <div className="flex items-center justify-center py-20">

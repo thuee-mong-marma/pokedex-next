@@ -18,7 +18,6 @@ type PokemonData = {
 const Pokemon = ({ pokemon }: PokemonProps) => {
   const [pokemonData, setPokemonData] = useState<Pokemon>();
   const [isLoading, setIsLoading] = useState(false);
-  const [types, setTypes] = useState<PokemonType[]>([]);
   const { openModal } = useModal();
   const { setPokemon } = usePokemon();
 
@@ -27,9 +26,8 @@ const Pokemon = ({ pokemon }: PokemonProps) => {
     const fetchPokemon = async () => {
       const response = await fetch(pokemon.url);
       const data = await response.json();
-      // console.log("pokemon data", data);
+      console.log("pokemon data", data);
       setPokemonData(data);
-      setTypes(data.types);
       setIsLoading(false);
     };
 
@@ -65,7 +63,7 @@ const Pokemon = ({ pokemon }: PokemonProps) => {
           </div>
 
           <div className="flex gap-2 mt-auto">
-            {types.map((item, index) => (
+            {pokemonData.types.map((item, index) => (
               <div
                 key={index}
                 className={cn(

@@ -17,7 +17,7 @@ export const PokemonModal = () => {
   const { isOpen, closeModal } = useModal();
   const { pokemon } = usePokemon();
 
-  console.log("pokemon modal", pokemon);
+  // console.log("pokemon modal", pokemon);
 
   return (
     <Dialog open={isOpen}>
@@ -47,7 +47,7 @@ export const PokemonModal = () => {
               {pokemon.stats.filter(item => !item.stat.name.includes('special')).map((item, index) => (
                 <div key={index} className="w-full space-y-1">
                   <p className="font-medium capitalize">{item.stat.name}</p>
-                  <Progress value={item.base_stat} foregroundColor={`bg-${item.stat.name}`} backgroundColor="bg-neutral-200"/>
+                  <Progress value={item.base_stat}/>
                 </div>
               ))}
             </div>
