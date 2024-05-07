@@ -22,8 +22,8 @@ export const PokemonModal = () => {
   return (
     <Dialog open={isOpen}>
       <DialogContent className="bg-white">
-        <div className="flex flex-col items-center justify-center gap-8">
-          <div className="w-full flex items-center justify-between">
+        <div className="flex flex-col items-center justify-center gap-12">
+          <div className="w-full flex items-center justify-between gap-2">
             <div className="flex-1 space-y-2">
               <p className="text-3xl font-medium capitalize">{pokemon.name}</p>
               <p className="text-xl font-medium">#{pokemon.id}</p>
@@ -32,10 +32,7 @@ export const PokemonModal = () => {
               {pokemon.types.map((item, index) => (
                 <div
                   key={index}
-                  className={cn(
-                    "py-1 px-2 rounded-md text-white capitalize",
-                    `bg-${item.type.name}`
-                  )}
+                  className="py-1 px-2 rounded-md text-white capitalize bg-neutral-500"
                 >
                   {item.type.name}
                 </div>

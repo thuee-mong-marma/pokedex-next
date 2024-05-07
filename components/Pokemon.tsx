@@ -61,15 +61,11 @@ const Pokemon = ({ pokemon }: PokemonProps) => {
               className="self-center"
             />
           </div>
-
           <div className="flex gap-2 mt-auto">
             {pokemonData.types.map((item, index) => (
               <div
                 key={index}
-                className={cn(
-                  "py-1 px-2 rounded-md text-white capitalize",
-                  `bg-${item.type.name}`
-                )}
+                className="py-1 px-2 rounded-md text-white capitalize bg-neutral-500"
               >
                 {item.type.name}
               </div>
