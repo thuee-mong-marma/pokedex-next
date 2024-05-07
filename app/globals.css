@@ -2,32 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+body {
+  background-size: 100% 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.pokemon-card:hover {
+  animation: bounce 0.75s;
+}
+
+.loader {
+  display: block;
+  --height-of-loader: 4px;
+  --loader-color: #0071e2;
+  width: 130px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+  ;
+}
+
+@keyframes bounce {
+  20% {
+      transform: translateY(-6px);
+  }
+  40% {
+      transform: translateY(0px);
+  }
+
+  80% {
+      transform: translateY(-2px);
+  }
+  100% {
+      transform: translateY(0);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
   }
 }
